@@ -11,9 +11,8 @@ namespace FileReader
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            methods Methods = new methods();
-            Methods.ReadJson();
-            Methods.PrintData();
+            Methods methods = new Methods();
+            methods.ReadJson();
         }
 
 

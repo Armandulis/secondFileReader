@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\JsonReader\\JsonReader.csproj",
+      "projectUniqueName": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\JsonReader\\JsonReader.csproj",
       "projectName": "JsonReader",
-      "projectPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\JsonReader\\JsonReader.csproj",
+      "projectPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\JsonReader\\JsonReader.csproj",
       "packagesPath": "C:\\Users\\Arman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\JsonReader\\obj\\",
+      "outputPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\JsonReader\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
