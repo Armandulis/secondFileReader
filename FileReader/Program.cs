@@ -10,7 +10,6 @@ namespace FileReader
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             Methods methods = new Methods();
             methods.ReadJson();
         }

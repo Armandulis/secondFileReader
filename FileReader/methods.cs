@@ -10,39 +10,46 @@ namespace FileReader
 {
     public class Methods
     {
-        List<MovieReviews> reviews;
+        IEnumerable<MovieReviews> reviews;
 
 
         public void ReadJson()
         {
-            
+
             var sw = new Stopwatch();
+            Console.WriteLine("Reading file...");
             sw.Start();
             using (StreamReader r = new StreamReader("C://Users//Arman//source//repos//JsonReaderAndMovieReviews/ratings.json"))
             {
                 string json = r.ReadToEnd();
-                 reviews = JsonConvert.DeserializeObject<List<MovieReviews>>(json);
+                reviews = JsonConvert.DeserializeObject<IEnumerable<MovieReviews>>(json);
             }
             sw.Stop();
             Console.WriteLine("time for it to read the file: " + sw.Elapsed);
+            Console.ReadLine();
 
-            ListOfMoviesFromReviever();
+            Top5Movies();
+
+
+
+
         }
         // 1. On input N, what are the number of reviews from reviewer N?
-        public void AmountOfReviews() {
+        public void AmountOfReviews()
+        {
 
             int counter = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer == 1)
+                if (movieReviews.Reviewer == 571)
                 {
                     counter++;
                 }
             }
 
             Console.WriteLine("Number of reviews reviewer has given:" + counter);
-            Console.Read();
+            Console.ReadLine();
 
         }
 
@@ -63,10 +70,9 @@ namespace FileReader
             var total = avarageRating / counter;
 
             Console.WriteLine("Avarge reviewer's rate:" + total);
-            Console.Read();
+            Console.ReadLine();
 
         }
-
         // 3. On input N and G, how many times has reviewer N given a movie grade G?
         public void AmountOfTimesReviewerRadedG()
         {
@@ -82,6 +88,27 @@ namespace FileReader
             Console.WriteLine("The amount of times reviewer rated rated G" + counter);
             Console.ReadLine();
 
+
+        }
+
+        //5. On input N, what is the average rate the movie N had received?
+        public void AvarageMovieGrade()
+        {
+            int counter = 0;
+            int avarageRating = 0;
+
+            foreach (MovieReviews movieReviews in reviews)
+            {
+                if (movieReviews.Movie == 781196)
+                {
+                    avarageRating = avarageRating + movieReviews.Grade;
+                    counter++;
+                }
+            }
+            var total = avarageRating / counter;
+
+            Console.WriteLine("Avarge Movie's rate:" + total);
+            Console.ReadLine();
 
         }
 
@@ -101,16 +128,69 @@ namespace FileReader
             Console.ReadLine();
         }
 
+        //7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
+        public void Top5Movies()
+        {
+
+            List < MovieReviews > listOfMovies5 = new List<MovieReviews>();
+            foreach (var item in reviews)
+            {
+                if ( item.Grade == 5) { listOfMovies5.Add(item); }
+            }
+
+
+            var rew = listOfMovies5.GroupBy(i => i.Grade).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
+
+            foreach (var movieReview in rew)
+            {
+                Console.WriteLine("Reviewer: " + movieReview.Reviewer + " Grade: " + movieReview.Grade + " Date: " + movieReview.Date + " Movie: " + movieReview.Movie);
+            }
+            Console.ReadLine();
+
+        }
+
+        //8. What reviewer(s) had done most reviews?
+        public void TopReviewers()
+        {
+            var rew = reviews.GroupBy(i => i.Reviewer).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
+
+            var objRew = reviews.FirstOrDefault(r => r.Reviewer == rew);
+
+            Console.WriteLine("reviewer(s) had done most reviews: " + objRew.Reviewer);
+            Console.ReadLine();
+            ListOfMoviesFromReviever(objRew.Reviewer);
+
+        }
+
+        //9. On input N, what is top N of movies? The score of a movie is its average rate.
+        public void TopMovies()
+        {
+            var movieIDs = reviews.GroupBy(i => i.Movie).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
+            
+
+            var rew = reviews.GroupBy(i => i.Reviewer).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
+
+            var objRew = reviews.FirstOrDefault(r => r.Reviewer == rew);
+
+            Console.WriteLine("reviewer(s) had done most reviews: " + objRew.Reviewer);
+            Console.ReadLine();
+            ListOfMoviesFromReviever(objRew.Reviewer);
+
+        }
+
         // 10. On input N, what are the movies that reviewer N has reviewed?
         //The list should be sorted decreasing by rate first, and date secondly.
-        public void ListOfMoviesFromReviever()
+        public void ListOfMoviesFromReviever(int reviewerN)
         {
+            var counter = 0;
             List<MovieReviews> pictedList = new List<MovieReviews>();
-
+            var sw = new Stopwatch();
+            sw.Start();
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer==1)
+                if (movieReviews.Reviewer == reviewerN)
                 {
+                    counter++;
                     pictedList.Add(movieReviews);
                 }
             }
@@ -119,83 +199,12 @@ namespace FileReader
 
             foreach (MovieReviews movieReview in sortedList)
             {
-                Console.WriteLine("Grade: " + movieReview.Grade + " Date: " + movieReview.Date);
+                Console.WriteLine("Reviewer: " + movieReview.Reviewer +" Grade: " + movieReview.Grade + " Date: " + movieReview.Date);
             }
+            sw.Stop();
+            Console.WriteLine("Total reviews done by reviewer: " + counter + " timer: " + sw.Elapsed);
+            Console.WriteLine();
             Console.ReadLine();
         }
-
-
-        private static void Quick_Sort(int[] arr, int left, int right)
-            {
-                if (left < right)
-                {
-                    int pivot = Partition(arr, left, right);
-
-                    if (pivot > 1)
-                    {
-                        Quick_Sort(arr, left, pivot - 1);
-                    }
-                    if (pivot + 1 < right)
-                    {
-                        Quick_Sort(arr, pivot + 1, right);
-                    }
-                }
-
-            }
-
-            private static int Partition(int[] arr, int left, int right)
-            {
-                int pivot = arr[left];
-                while (true)
-                {
-
-                    while (arr[left] < pivot)
-                    {
-                        left++;
-                    }
-
-                    while (arr[right] > pivot)
-                    {
-                        right--;
-                    }
-
-                    if (left < right)
-                    {
-                        if (arr[left] == arr[right]) return right;
-
-                        int temp = arr[left];
-                        arr[left] = arr[right];
-                        arr[right] = temp;
-
-
-                    }
-                    else
-                    {
-                        return right;
-                    }
-                }
-            }
-            public void asd()
-            {
-                int[] arr = new int[] { 2, 5, -4, 11, 0, 18, 22, 67, 51, 6 };
-
-                Console.WriteLine("Original array : ");
-                foreach (var item in arr)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-
-                Quick_Sort(arr, 0, arr.Length - 1);
-
-                Console.WriteLine();
-                Console.WriteLine("Sorted array : ");
-
-                foreach (var item in arr)
-                {
-                    Console.Write(" " + item);
-                }
-                Console.WriteLine();
-            }
-        }
     }
+}
