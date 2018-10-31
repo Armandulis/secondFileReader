@@ -91,6 +91,22 @@ namespace FileReader
 
         }
 
+        //4. On input N, how many have reviewed movie N? 
+        public void AmountOfReviewsForMovie()
+        {
+            int counter = 0;
+
+            foreach (MovieReviews movieReviews in reviews)
+            {
+                if (movieReviews.Movie == 781196)
+                {
+                    counter++;
+                }
+            }
+            Console.WriteLine("Number of reviews movie was given:" + counter);
+            Console.Read();
+        }
+
         //5. On input N, what is the average rate the movie N had received?
         public void AvarageMovieGrade()
         {
@@ -206,5 +222,31 @@ namespace FileReader
             Console.WriteLine();
             Console.ReadLine();
         }
+
+        //11. On input N, what are the reviewers that have reviewed movie N? The list should be sorted decreasing by rate first, and date secondly
+        public void ReviewersOfMovie()
+        {
+            List<MovieReviews> wowList = new List<MovieReviews>();
+
+            foreach (MovieReviews movieReviewer in reviews)
+            {
+                if (movieReviewer.Movie == 781196)
+                {
+
+                    wowList.Add(movieReviewer);
+
+                }
+            }
+            List<MovieReviews> sortedList = wowList.OrderBy(m => m.Date).OrderBy(m => m.Grade).ToList();
+            foreach (MovieReviews movieReviewer in sortedList)
+            {
+                Console.WriteLine("Grade: " + movieReviewer.Grade + " Date: " + movieReviewer.Date );
+
+            }
+            Console.ReadLine();
+
+        }
+
     }
+
 }
