@@ -155,13 +155,29 @@ namespace FileReader
             }
 
 
-            var rew = listOfMovies5.GroupBy(i => i.Grade).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
-
-            foreach (var movieReview in rew)
+            var rew = listOfMovies5.GroupBy(i => i.Movie);
+            MovieReviews currentMost = null;
+            MovieReviews tempRev =null;
+            int mosedSummedGroup =0;
+            foreach (var group in rew)
             {
-                Console.WriteLine("Reviewer: " + movieReview.Reviewer + " Grade: " + movieReview.Grade + " Date: " + movieReview.Date + " Movie: " + movieReview.Movie);
+                var currentGroupSum = 0;
+
+                foreach (var item in group)
+                {
+                    currentGroupSum++;
+                    tempRev = item;
+                }
+
+                if (currentGroupSum > mosedSummedGroup)
+                {
+                    currentMost = tempRev;
+                }
             }
+
+            Console.WriteLine("Reviewer: " + currentMost.Reviewer + " Grade: " + currentMost.Grade + " Date: " + currentMost.Date + " Movie: " + currentMost.Movie);
             Console.ReadLine();
+           
 
         }
 
