@@ -197,16 +197,39 @@ namespace FileReader
         //9. On input N, what is top N of movies? The score of a movie is its average rate.
         public void TopMovies()
         {
-            var movieIDs = reviews.GroupBy(i => i.Movie).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
+            var movieIDs = reviews.GroupBy(i => i.Movie);
+
+            MovieReviews topMovie = null;
+            MovieReviews tempTop = null;
+            double topAvrg = 0;
+
+            foreach (var group in movieIDs)
+            {
+                int counter = 0;
+                int total = 0;
+                double averageTmp = 0;
+                foreach (var item in group)
+                {
+                    total = total + item.Grade;
+                    counter++;
+                    tempTop = item;
+                }
+                averageTmp = total / counter;
+
+                if (averageTmp > topAvrg)
+                {
+                    topAvrg = averageTmp;
+                    topMovie = tempTop;
+                }
+            }
+
+
+
             
 
-            var rew = reviews.GroupBy(i => i.Reviewer).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
 
-            var objRew = reviews.FirstOrDefault(r => r.Reviewer == rew);
-
-            Console.WriteLine("reviewer(s) had done most reviews: " + objRew.Reviewer);
+            Console.WriteLine("reviewer(s) had done most reviews: ");
             Console.ReadLine();
-            ListOfMoviesFromReviever(objRew.Reviewer);
 
         }
 
