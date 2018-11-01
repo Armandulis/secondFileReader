@@ -989,12 +989,34 @@
           "Microsoft.NET.Test.Sdk": "15.8.0"
         }
       },
+      "Entities.Json/1.0.0": {
+        "runtime": {
+          "Entities.Json.dll": {}
+        }
+      },
       "FileReader/1.0.0": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Entities.Json": "1.0.0",
+          "Infrastructure.Data": "1.0.0",
+          "Newtonsoft.Json": "11.0.2",
+          "RatingAndSorting": "1.0.0"
         },
         "runtime": {
           "FileReader.dll": {}
+        }
+      },
+      "Infrastructure.Data/1.0.0": {
+        "runtime": {
+          "Infrastructure.Data.dll": {}
+        }
+      },
+      "RatingAndSorting/1.0.0": {
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "RatingAndSorting.dll": {}
         }
       }
     }
@@ -1516,7 +1538,22 @@
       "path": "xunit.runner.visualstudio/2.3.1",
       "hashPath": "xunit.runner.visualstudio.2.3.1.nupkg.sha512"
     },
+    "Entities.Json/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "FileReader/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RatingAndSorting/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

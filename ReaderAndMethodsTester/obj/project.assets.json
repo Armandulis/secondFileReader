@@ -1597,18 +1597,59 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "Entities.Json/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Entities.Json.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entities.Json.dll": {}
+        }
+      },
       "FileReader/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Infrastructure.Data": "1.0.0",
           "Microsoft.NETCore.App": "2.1.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "11.0.2",
+          "RatingAndSorting": "1.0.0"
         },
         "compile": {
           "bin/placeholder/FileReader.dll": {}
         },
         "runtime": {
           "bin/placeholder/FileReader.dll": {}
+        }
+      },
+      "Infrastructure.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.Data.dll": {}
+        }
+      },
+      "RatingAndSorting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "bin/placeholder/RatingAndSorting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RatingAndSorting.dll": {}
         }
       }
     }
@@ -5483,10 +5524,25 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "Entities.Json/1.0.0": {
+      "type": "project",
+      "path": "../Json/Entities.Json.csproj",
+      "msbuildProject": "../Json/Entities.Json.csproj"
+    },
     "FileReader/1.0.0": {
       "type": "project",
       "path": "../FileReader/FileReader.csproj",
       "msbuildProject": "../FileReader/FileReader.csproj"
+    },
+    "Infrastructure.Data/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure.Data/Infrastructure.Data.csproj",
+      "msbuildProject": "../Infrastructure.Data/Infrastructure.Data.csproj"
+    },
+    "RatingAndSorting/1.0.0": {
+      "type": "project",
+      "path": "../RatingAndSorting/RatingAndSorting.csproj",
+      "msbuildProject": "../RatingAndSorting/RatingAndSorting.csproj"
     }
   },
   "projectFileDependencyGroups": {

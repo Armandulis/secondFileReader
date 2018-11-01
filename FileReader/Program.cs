@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Infrastructure.Data;
+using Newtonsoft.Json;
+using RatingAndSorting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace FileReader
@@ -10,9 +13,10 @@ namespace FileReader
 
         static void Main(string[] args)
         {
-            Methods methods = new Methods();
-            methods.ReadJson();
+            var Printer = new Printer();
+
         }
+
 
 
     }

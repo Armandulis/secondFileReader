@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Entities.Json;
+using Newtonsoft.Json;
+using RatingAndSorting;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,36 +8,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FileReader
+namespace RatingAndSorting
 {
-    public class Methods
+    public class Methods : IMethods
     {
         IEnumerable<MovieReviews> reviews;
 
-
-        public void ReadJson()
+        public Methods(IEnumerable<MovieReviews> list)
         {
-
-            var sw = new Stopwatch();
-            Console.WriteLine("Reading file...");
-            sw.Start();
-            using (StreamReader r = new StreamReader("C://Users//Arman//source//repos//JsonReaderAndMovieReviews/ratings.json"))
-            {
-                string json = r.ReadToEnd();
-                reviews = JsonConvert.DeserializeObject<IEnumerable<MovieReviews>>(json);
-            }
-            sw.Stop();
-            Console.WriteLine("time for it to read the file: " + sw.Elapsed);
-            Console.ReadLine();
-
-            Top5Movies();
-
-
-
-
+            reviews = list;
         }
+       
         // 1. On input N, what are the number of reviews from reviewer N?
-        public void AmountOfReviews()
+        public int AmountOfReviews()
         {
 
             int counter = 0;
@@ -47,14 +32,11 @@ namespace FileReader
                     counter++;
                 }
             }
-
-            Console.WriteLine("Number of reviews reviewer has given:" + counter);
-            Console.ReadLine();
-
+            return counter;
         }
 
         //2. On input N, what is the average rate that reviewer N had given?
-        public void AvarageRateReviewer()
+        public double AvarageRateReviewer()
         {
             int counter = 0;
             int avarageRating = 0;
@@ -67,14 +49,11 @@ namespace FileReader
                     counter++;
                 }
             }
-            var total = avarageRating / counter;
-
-            Console.WriteLine("Avarge reviewer's rate:" + total);
-            Console.ReadLine();
-
+            double total = avarageRating / counter;
+            return total;
         }
         // 3. On input N and G, how many times has reviewer N given a movie grade G?
-        public void AmountOfTimesReviewerRadedG()
+        public int AmountOfTimesReviewerRadedG()
         {
             int counter = 0;
 
@@ -85,14 +64,12 @@ namespace FileReader
                     counter++;
                 }
             }
-            Console.WriteLine("The amount of times reviewer rated rated G" + counter);
-            Console.ReadLine();
-
+            return counter;
 
         }
 
         //4. On input N, how many have reviewed movie N? 
-        public void AmountOfReviewsForMovie()
+        public int AmountOfReviewsForMovie()
         {
             int counter = 0;
 
@@ -103,12 +80,12 @@ namespace FileReader
                     counter++;
                 }
             }
-            Console.WriteLine("Number of reviews movie was given:" + counter);
-            Console.Read();
+
+            return counter;
         }
 
         //5. On input N, what is the average rate the movie N had received?
-        public void AvarageMovieGrade()
+        public double AvarageMovieGrade()
         {
             int counter = 0;
             int avarageRating = 0;
@@ -121,15 +98,13 @@ namespace FileReader
                     counter++;
                 }
             }
-            var total = avarageRating / counter;
+            double total = avarageRating / counter;
 
-            Console.WriteLine("Avarge Movie's rate:" + total);
-            Console.ReadLine();
-
+            return total;
         }
 
         //6. On input N and G, how many times had movie N received grade G?
-        public void AmountOfMovieRecievedGrade()
+        public int AmountOfMovieRecievedGrade()
         {
             int counter = 0;
 
@@ -140,12 +115,11 @@ namespace FileReader
                     counter++;
                 }
             }
-            Console.WriteLine("The amount of times movie have recieved grade G" + counter);
-            Console.ReadLine();
+            return counter;
         }
 
         //7. What is the id(s) of the movie(s) with the highest number of top rates (5)?
-        public void Top5Movies()
+        public MovieReviews Top5Movies()
         {
 
             List < MovieReviews > listOfMovies5 = new List<MovieReviews>();
@@ -174,24 +148,16 @@ namespace FileReader
                     currentMost = tempRev;
                 }
             }
-
-            Console.WriteLine("Reviewer: " + currentMost.Reviewer + " Grade: " + currentMost.Grade + " Date: " + currentMost.Date + " Movie: " + currentMost.Movie);
-            Console.ReadLine();
-           
-
+            return currentMost;
         }
 
         //8. What reviewer(s) had done most reviews?
-        public void TopReviewers()
+        public MovieReviews TopReviewers()
         {
             var rew = reviews.GroupBy(i => i.Reviewer).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
-
             var objRew = reviews.FirstOrDefault(r => r.Reviewer == rew);
 
-            Console.WriteLine("reviewer(s) had done most reviews: " + objRew.Reviewer);
-            Console.ReadLine();
-            ListOfMoviesFromReviever(objRew.Reviewer);
-
+            return objRew;
         }
 
         //9. On input N, what is top N of movies? The score of a movie is its average rate.
@@ -228,42 +194,34 @@ namespace FileReader
             
 
 
-            Console.WriteLine("reviewer(s) had done most reviews: ");
+            Console.WriteLine("Top N Movies: ");
             Console.ReadLine();
 
         }
 
         // 10. On input N, what are the movies that reviewer N has reviewed?
         //The list should be sorted decreasing by rate first, and date secondly.
-        public void ListOfMoviesFromReviever(int reviewerN)
+        public IOrderedEnumerable<MovieReviews> ListOfMoviesFromReviever()
         {
             var counter = 0;
             List<MovieReviews> pictedList = new List<MovieReviews>();
-            var sw = new Stopwatch();
-            sw.Start();
+
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer == reviewerN)
+                if (movieReviews.Reviewer == 571)
                 {
                     counter++;
                     pictedList.Add(movieReviews);
                 }
             }
 
-            List<MovieReviews> sortedList = pictedList.OrderBy(m => m.Date).OrderBy(m => m.Grade).ToList();
-
-            foreach (MovieReviews movieReview in sortedList)
-            {
-                Console.WriteLine("Reviewer: " + movieReview.Reviewer +" Grade: " + movieReview.Grade + " Date: " + movieReview.Date);
-            }
-            sw.Stop();
-            Console.WriteLine("Total reviews done by reviewer: " + counter + " timer: " + sw.Elapsed);
-            Console.WriteLine();
-            Console.ReadLine();
+            var sortedList = pictedList.OrderBy(m => m.Date).OrderBy(m => m.Grade);
+            
+            return sortedList;
         }
 
         //11. On input N, what are the reviewers that have reviewed movie N? The list should be sorted decreasing by rate first, and date secondly
-        public void ReviewersOfMovie()
+        public IOrderedEnumerable<MovieReviews> ReviewersOfMovie()
         {
             List<MovieReviews> wowList = new List<MovieReviews>();
 
@@ -276,14 +234,8 @@ namespace FileReader
 
                 }
             }
-            List<MovieReviews> sortedList = wowList.OrderBy(m => m.Date).OrderBy(m => m.Grade).ToList();
-            foreach (MovieReviews movieReviewer in sortedList)
-            {
-                Console.WriteLine("Grade: " + movieReviewer.Grade + " Date: " + movieReviewer.Date );
-
-            }
-            Console.ReadLine();
-
+            var sortedList = wowList.OrderBy(m => m.Date).OrderBy(m => m.Grade);
+            return sortedList;
         }
 
     }

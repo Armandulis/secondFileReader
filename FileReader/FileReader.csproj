@@ -9,4 +9,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Json\Entities.Json.csproj" />
+    <ProjectReference Include="..\RatingAndSorting\RatingAndSorting.csproj" />
+  </ItemGroup>
+
 </Project>

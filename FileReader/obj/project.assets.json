@@ -216,6 +216,44 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "Entities.Json/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Entities.Json.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entities.Json.dll": {}
+        }
+      },
+      "Infrastructure.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.Data.dll": {}
+        }
+      },
+      "RatingAndSorting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "bin/placeholder/RatingAndSorting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RatingAndSorting.dll": {}
+        }
       }
     }
   },
@@ -710,12 +748,30 @@
         "newtonsoft.json.11.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
+    },
+    "Entities.Json/1.0.0": {
+      "type": "project",
+      "path": "../Json/Entities.Json.csproj",
+      "msbuildProject": "../Json/Entities.Json.csproj"
+    },
+    "Infrastructure.Data/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure.Data/Infrastructure.Data.csproj",
+      "msbuildProject": "../Infrastructure.Data/Infrastructure.Data.csproj"
+    },
+    "RatingAndSorting/1.0.0": {
+      "type": "project",
+      "path": "../RatingAndSorting/RatingAndSorting.csproj",
+      "msbuildProject": "../RatingAndSorting/RatingAndSorting.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "Entities.Json >= 1.0.0",
+      "Infrastructure.Data >= 1.0.0",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Newtonsoft.Json >= 11.0.2"
+      "Newtonsoft.Json >= 11.0.2",
+      "RatingAndSorting >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -747,7 +803,17 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\Infrastructure.Data\\Infrastructure.Data.csproj": {
+              "projectPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\Infrastructure.Data\\Infrastructure.Data.csproj"
+            },
+            "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\Json\\Entities.Json.csproj": {
+              "projectPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\Json\\Entities.Json.csproj"
+            },
+            "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\RatingAndSorting\\RatingAndSorting.csproj": {
+              "projectPath": "C:\\Users\\Arman\\source\\repos\\JsonReaderAndMovieReviews\\secondFileReader\\RatingAndSorting\\RatingAndSorting.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -8,7 +8,10 @@
     ".NETCoreApp,Version=v2.1": {
       "FileReader/1.0.0": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Entities.Json": "1.0.0",
+          "Infrastructure.Data": "1.0.0",
+          "Newtonsoft.Json": "11.0.2",
+          "RatingAndSorting": "1.0.0"
         },
         "runtime": {
           "FileReader.dll": {}
@@ -20,6 +23,29 @@
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.0.2.21924"
           }
+        }
+      },
+      "Entities.Json/1.0.0": {
+        "runtime": {
+          "Entities.Json.dll": {}
+        }
+      },
+      "Infrastructure.Data/1.0.0": {
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "Infrastructure.Data.dll": {}
+        }
+      },
+      "RatingAndSorting/1.0.0": {
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "RatingAndSorting.dll": {}
         }
       }
     }
@@ -36,6 +62,21 @@
       "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "path": "newtonsoft.json/11.0.2",
       "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
+    "Entities.Json/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RatingAndSorting/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

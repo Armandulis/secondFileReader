@@ -9,7 +9,7 @@ namespace ReaderAndMethodsTester
         [Fact]
         public void Test1()
         {
-            Methods method = new Methods();
+           // Methods method = new Methods();
 
         }
     }

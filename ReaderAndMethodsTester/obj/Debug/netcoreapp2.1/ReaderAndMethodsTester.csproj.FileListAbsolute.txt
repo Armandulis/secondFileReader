@@ -6,8 +6,14 @@ C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAnd
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\ReaderAndMethodsTester.runtimeconfig.dev.json
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\ReaderAndMethodsTester.dll
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\ReaderAndMethodsTester.pdb
+C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\Entities.Json.dll
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\FileReader.dll
+C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\Infrastructure.Data.dll
+C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\RatingAndSorting.dll
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\FileReader.pdb
+C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\Entities.Json.pdb
+C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\Infrastructure.Data.pdb
+C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\bin\Debug\netcoreapp2.1\RatingAndSorting.pdb
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\obj\Debug\netcoreapp2.1\ReaderAndMethodsTester.csprojAssemblyReference.cache
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\obj\Debug\netcoreapp2.1\ReaderAndMethodsTester.csproj.CoreCompileInputs.cache
 C:\Users\Arman\source\repos\JsonReaderAndMovieReviews\secondFileReader\ReaderAndMethodsTester\obj\Debug\netcoreapp2.1\ReaderAndMethodsTester.AssemblyInfoInputs.cache
