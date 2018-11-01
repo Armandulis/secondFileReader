@@ -35,22 +35,22 @@ namespace FileReader
         {
 
             //1
-            Console.WriteLine("Number of reviews reviewer has given: " + methods.AmountOfReviews());
+            Console.WriteLine("Number of reviews reviewer has given: " + methods.AmountOfReviews(571));
             Console.ReadLine();
             //2
-            Console.WriteLine("Avarge reviewer's rate:" + methods.AvarageRateReviewer());
+            Console.WriteLine("Avarge reviewer's rate:" + methods.AvarageRateReviewer(630));
             Console.ReadLine();
             //3
-            Console.WriteLine("The amount of times reviewer rated rated G" + methods.AmountOfTimesReviewerRadedG());
+            Console.WriteLine("The amount of times reviewer rated rated G" + methods.AmountOfTimesReviewerRadedG(130, 5));
             Console.ReadLine();
             //4
-            Console.WriteLine("Number of reviews movie was given:" + methods.AmountOfReviewsForMovie());
+            Console.WriteLine("Number of reviews movie was given:" + methods.AmountOfReviewsForMovie(2525645));
             Console.Read();
             //5
-            Console.WriteLine("Avarge Movie's rate:" + methods.AvarageMovieGrade());
+            Console.WriteLine("Avarge Movie's rate:" + methods.AvarageMovieGrade(1664010));
             Console.ReadLine();
             //6
-            Console.WriteLine("The amount of times movie have recieved grade G" + methods.AmountOfMovieRecievedGrade());
+            Console.WriteLine("The amount of times movie have recieved grade G" + methods.AmountOfMovieRecievedGrade(1664010, 5));
             Console.ReadLine();
             //7
             var topMovie = methods.Top5Movies();
@@ -63,21 +63,19 @@ namespace FileReader
             //9
 
             //10
-            var sortedList = methods.ListOfMoviesFromReviever();
+            var sortedList = methods.ListOfMoviesFromReviever(571);
             Console.WriteLine("Reviewer have reviewed these movies: ");
             foreach (MovieReviews movieReview in sortedList)
             {
-                
                 Console.WriteLine("Movie: "+ movieReview.Movie +" Grade: " + movieReview.Grade + " Date: " + movieReview.Date);
             }
             Console.ReadLine();
             //11
-            sortedList = methods.ReviewersOfMovie();
+            sortedList = methods.ReviewersOfMovie(1664010);
             Console.WriteLine("Reviewers that have reviewed this movie: ");
             foreach (MovieReviews movieReviewer in sortedList)
             {
                 Console.WriteLine("Reviewer: "+ movieReviewer.Reviewer +" Grade: " + movieReviewer.Grade + " Date: " + movieReviewer.Date);
-
             }
             Console.ReadLine();
 

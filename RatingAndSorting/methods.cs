@@ -20,14 +20,14 @@ namespace RatingAndSorting
         }
        
         // 1. On input N, what are the number of reviews from reviewer N?
-        public int AmountOfReviews()
+        public int AmountOfReviews(int reviewer)
         {
 
             int counter = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer == 571)
+                if (movieReviews.Reviewer == reviewer)
                 {
                     counter++;
                 }
@@ -36,14 +36,14 @@ namespace RatingAndSorting
         }
 
         //2. On input N, what is the average rate that reviewer N had given?
-        public double AvarageRateReviewer()
+        public double AvarageRateReviewer(int reviewer)
         {
             int counter = 0;
             int avarageRating = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer == 1)
+                if (movieReviews.Reviewer == reviewer)
                 {
                     avarageRating = avarageRating + movieReviews.Grade;
                     counter++;
@@ -53,13 +53,13 @@ namespace RatingAndSorting
             return total;
         }
         // 3. On input N and G, how many times has reviewer N given a movie grade G?
-        public int AmountOfTimesReviewerRadedG()
+        public int AmountOfTimesReviewerRadedG(int reviewer, int grade)
         {
             int counter = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer == 4 && movieReviews.Grade == 4)
+                if (movieReviews.Reviewer == reviewer && movieReviews.Grade == grade)
                 {
                     counter++;
                 }
@@ -69,13 +69,13 @@ namespace RatingAndSorting
         }
 
         //4. On input N, how many have reviewed movie N? 
-        public int AmountOfReviewsForMovie()
+        public int AmountOfReviewsForMovie(int movie)
         {
             int counter = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Movie == 781196)
+                if (movieReviews.Movie == movie)
                 {
                     counter++;
                 }
@@ -85,14 +85,14 @@ namespace RatingAndSorting
         }
 
         //5. On input N, what is the average rate the movie N had received?
-        public double AvarageMovieGrade()
+        public double AvarageMovieGrade(int movie)
         {
             int counter = 0;
             int avarageRating = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Movie == 781196)
+                if (movieReviews.Movie == movie)
                 {
                     avarageRating = avarageRating + movieReviews.Grade;
                     counter++;
@@ -104,13 +104,13 @@ namespace RatingAndSorting
         }
 
         //6. On input N and G, how many times had movie N received grade G?
-        public int AmountOfMovieRecievedGrade()
+        public int AmountOfMovieRecievedGrade(int movie, int grade)
         {
             int counter = 0;
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Movie == 781196 && movieReviews.Grade == 4)
+                if (movieReviews.Movie == movie && movieReviews.Grade == grade)
                 {
                     counter++;
                 }
@@ -161,7 +161,7 @@ namespace RatingAndSorting
         }
 
         //9. On input N, what is top N of movies? The score of a movie is its average rate.
-        public void TopMovies()
+        public void TopMovies(int top)
         {
             var movieIDs = reviews.GroupBy(i => i.Movie);
 
@@ -201,14 +201,14 @@ namespace RatingAndSorting
 
         // 10. On input N, what are the movies that reviewer N has reviewed?
         //The list should be sorted decreasing by rate first, and date secondly.
-        public IOrderedEnumerable<MovieReviews> ListOfMoviesFromReviever()
+        public IOrderedEnumerable<MovieReviews> ListOfMoviesFromReviever(int reviwer)
         {
             var counter = 0;
             List<MovieReviews> pictedList = new List<MovieReviews>();
 
             foreach (MovieReviews movieReviews in reviews)
             {
-                if (movieReviews.Reviewer == 571)
+                if (movieReviews.Reviewer == reviwer)
                 {
                     counter++;
                     pictedList.Add(movieReviews);
@@ -221,13 +221,13 @@ namespace RatingAndSorting
         }
 
         //11. On input N, what are the reviewers that have reviewed movie N? The list should be sorted decreasing by rate first, and date secondly
-        public IOrderedEnumerable<MovieReviews> ReviewersOfMovie()
+        public IOrderedEnumerable<MovieReviews> ReviewersOfMovie(int movie)
         {
             List<MovieReviews> wowList = new List<MovieReviews>();
 
             foreach (MovieReviews movieReviewer in reviews)
             {
-                if (movieReviewer.Movie == 781196)
+                if (movieReviewer.Movie == movie)
                 {
 
                     wowList.Add(movieReviewer);
