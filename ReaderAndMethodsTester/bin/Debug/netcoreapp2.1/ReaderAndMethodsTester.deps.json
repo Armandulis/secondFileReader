@@ -1006,6 +1006,10 @@
         }
       },
       "Infrastructure.Data/1.0.0": {
+        "dependencies": {
+          "Entities.Json": "1.0.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
         "runtime": {
           "Infrastructure.Data.dll": {}
         }

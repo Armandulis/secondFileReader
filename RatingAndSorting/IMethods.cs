@@ -24,7 +24,7 @@ namespace RatingAndSorting
         //8. What reviewer(s) had done most reviews?
         MovieReviews TopReviewers();
         //9. On input N, what is top N of movies? The score of a movie is its average rate.
-         void TopMovies(int top);
+         int TopMovies();
         // 10. On input N, what are the movies that reviewer N has reviewed?
         //The list should be sorted decreasing by rate first, and date secondly.
         IOrderedEnumerable<MovieReviews> ListOfMoviesFromReviever(int reviwer);

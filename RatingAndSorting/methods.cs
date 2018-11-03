@@ -161,41 +161,30 @@ namespace RatingAndSorting
         }
 
         //9. On input N, what is top N of movies? The score of a movie is its average rate.
-        public void TopMovies(int top)
+        public int TopMovies()
         {
-            var movieIDs = reviews.GroupBy(i => i.Movie);
 
-            MovieReviews topMovie = null;
-            MovieReviews tempTop = null;
-            double topAvrg = 0;
-
-            foreach (var group in movieIDs)
+            int count = 0;
+            int sum = 0;
+            double avgRate = 0;
+            int movieId = 1;
+            foreach (var item in reviews)
             {
-                int counter = 0;
-                int total = 0;
-                double averageTmp = 0;
-                foreach (var item in group)
+                movieId = item.Movie;
+                if (item.Movie == movieId)
                 {
-                    total = total + item.Grade;
-                    counter++;
-                    tempTop = item;
-                }
-                averageTmp = total / counter;
+                    sum += item.Grade;
+                    count++;
 
-                if (averageTmp > topAvrg)
-                {
-                    topAvrg = averageTmp;
-                    topMovie = tempTop;
+                    if (sum / count > avgRate)
+                    {
+                        movieId = item.Movie;
+                        avgRate = sum / count;
+                    }
                 }
+                return movieId;
             }
-
-
-
-            
-
-
-            Console.WriteLine("Top N Movies: ");
-            Console.ReadLine();
+            return movieId;
 
         }
 
